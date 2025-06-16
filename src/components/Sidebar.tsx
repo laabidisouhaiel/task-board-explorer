@@ -6,7 +6,9 @@ import {
   LogOut, 
   User,
   Menu,
-  X
+  X,
+  CheckSquare,
+  BarChart3
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -22,6 +24,11 @@ const Sidebar = () => {
       icon: <LayoutDashboard className="h-5 w-5" />,
       label: "Tableaux",
       path: "/dashboard",
+    },
+    {
+      icon: <CheckSquare className="h-5 w-5" />,
+      label: "Toutes les tâches",
+      path: "/tasks",
     },
     {
       icon: <Settings className="h-5 w-5" />,

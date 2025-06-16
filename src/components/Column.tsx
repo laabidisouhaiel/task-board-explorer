@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Plus, Trash2, MoreHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -13,6 +12,7 @@ interface ColumnProps {
   onDeleteCard: (cardId: string) => void;
   onDeleteColumn: (columnId: string) => void;
   onMoveCard: (cardId: string, targetColumnId: string) => void;
+  onUpdateCard: (card: CardType) => void;
 }
 
 const cardColors = [
@@ -24,7 +24,7 @@ const cardColors = [
   "bg-orange-100 border-orange-300"
 ];
 
-const Column = ({ column, onAddCard, onDeleteCard, onDeleteColumn, onMoveCard }: ColumnProps) => {
+const Column = ({ column, onAddCard, onDeleteCard, onDeleteColumn, onMoveCard, onUpdateCard }: ColumnProps) => {
   const [showAddCard, setShowAddCard] = useState(false);
   const [newCardTitle, setNewCardTitle] = useState("");
   const [newCardDescription, setNewCardDescription] = useState("");
@@ -83,6 +83,7 @@ const Column = ({ column, onAddCard, onDeleteCard, onDeleteColumn, onMoveCard }:
             key={card.id} 
             card={card} 
             onDelete={onDeleteCard}
+            onUpdate={onUpdateCard}
           />
         ))}
       </div>

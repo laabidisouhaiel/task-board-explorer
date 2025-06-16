@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { ArrowLeft, Plus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -137,6 +136,15 @@ const Board = ({ board, onBack, onDelete }: BoardProps) => {
     }
   };
 
+  const handleUpdateCard = (updatedCard: CardType) => {
+    setColumns(columns.map(col => ({
+      ...col,
+      cards: col.cards.map(card => 
+        card.id === updatedCard.id ? updatedCard : card
+      )
+    })));
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="bg-white shadow-sm border-b">
@@ -180,6 +188,7 @@ const Board = ({ board, onBack, onDelete }: BoardProps) => {
               onDeleteCard={handleDeleteCard}
               onDeleteColumn={handleDeleteColumn}
               onMoveCard={handleMoveCard}
+              onUpdateCard={handleUpdateCard}
             />
           ))}
           
