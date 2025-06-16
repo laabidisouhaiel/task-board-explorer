@@ -1,8 +1,8 @@
-
 import { useState } from "react";
 import { Plus, Search, Grid, List } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Link } from "react-router-dom";
 import Sidebar from "@/components/Sidebar";
 import CreateBoard from "@/components/CreateBoard";
 import { BoardType } from "./Index";
@@ -136,8 +136,9 @@ const Dashboard = () => {
               : "space-y-4"
             }>
               {filteredBoards.map((board) => (
-                <div
+                <Link 
                   key={board.id}
+                  to={`/project/${board.id}/tasks`}
                   className={`bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer group ${
                     viewMode === "list" ? "flex items-center p-4" : ""
                   }`}
@@ -165,7 +166,7 @@ const Dashboard = () => {
                       </div>
                     </>
                   )}
-                </div>
+                </Link>
               ))}
             </div>
           )}
